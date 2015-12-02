@@ -16,5 +16,5 @@ public class UserPrincipal implements Principal {
     @NonNull
     private String name;
     @NonNull
-    private Set<Permission> permissions;
+    private Set<String> permissions;
 }

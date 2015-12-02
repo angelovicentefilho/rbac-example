@@ -3,10 +3,34 @@
 <html lang="en">
 <head>
     <link href="https://cdn.jsdelivr.net/semantic-ui/2.1.6/semantic.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/css/example.css" rel="stylesheet" type="text/css"/>
     <meta charset="utf-8"><!DOCTYPE html>
 </head>
 <body>
-<div class="container">
+<div class="ui fixed inverted menu">
+    <div class="ui container">
+        <a href="#" class="header item">
+            RBAC Example
+        </a>
+        <#if principal??>
+            <a href="/" class="item">Home</a>
+        </#if>
+        <#if principal?? && principal.permissions?seq_contains("readIssue")>
+            <a href="/issues/" class="item">Issue</a>
+        </#if>
+        <#if principal?? && principal.permissions?seq_contains("manageUser")>
+            <a href="/users/" class="item">Users</a>
+        </#if>
+
+
+        <div class="right item">
+            <form method="post" action="/logout">
+                <button class="ui button" type="submit"><i class="ui sign out icon"></i>Logout</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="ui main container">
     <#nested/>
 </div>
 </body>

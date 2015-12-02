@@ -36,7 +36,7 @@ public class LoginController {
 
         try {
             User user = em
-                    .createQuery("SELECT u FROM User u LEFT JOIN FETCH Role r LEFT JOIN FETCH Permission p WHERE u.account = :account", User.class)
+                    .createQuery("SELECT u FROM User u LEFT JOIN FETCH u.roles r LEFT JOIN FETCH r.permissions p WHERE u.account = :account", User.class)
                     .setParameter("account", account)
                     .getSingleResult();
 

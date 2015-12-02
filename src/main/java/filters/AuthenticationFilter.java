@@ -1,5 +1,9 @@
 package filters;
 
+import com.google.common.base.Splitter;
+import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
 import models.Permission;
 import models.UserPrincipal;
 import ninja.*;
@@ -19,13 +23,11 @@ public class AuthenticationFilter implements Filter {
         if (session.get("account") == null) {
             return Results.redirect("/login");
         }
-        Set<Permission> permissions = new HashSet<>();
+        Set<String> permissions = new HashSet<>();
 
         if (session.get("permissions") != null) {
-            permissions = Arrays.asList(session.get("permissions").split(","))
-                    .stream()
-                    .map(pname -> new Permission(pname))
-                    .collect(Collectors.toSet());
+            permissions = ImmutableSet.copyOf(Splitter.on(',').split(session.get("permissions")));
+
         }
         context.setAttribute("principal", new UserPrincipal(session.get("account"), permissions));
 

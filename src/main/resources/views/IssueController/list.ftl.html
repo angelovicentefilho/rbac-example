@@ -1,0 +1,23 @@
+<#import "../layout/layout.ftl.html" as layout>
+<@layout.myLayout "List of issues">
+    <h1>Issues</h1>
+    <a class="ui button" href="/issue/new">New</a>
+    <#if issues?has_content>
+        <table class="ui table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Subject</th>
+                </tr>
+            </thead>
+            <tbody>
+                <#list issues as issue>
+                    <tr>
+                        <td>${issue.issueId}</td>
+                        <td>${issue.subject}</td>
+                    </tr>
+                </#list>
+            </tbody>
+        </table>
+    </#if>
+</@layout.myLayout>

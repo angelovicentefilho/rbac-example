@@ -1,0 +1,15 @@
+<#import "../layout/layout.ftl.html" as layout>
+<@layout.myLayout "New Issue">
+    <h1>New issue</h1>
+    <form class="ui large form" method="post" action="/issues/">
+        <div class="field">
+            <label>Subject</label>
+            <input type="text" name="subject" placeholder="Subject"/>
+        </div>
+        <div class="field">
+            <label>Description</label>
+            <textarea name="description"></textarea>
+        </div>
+        <button type="submit" class="ui primary button">create</button>
+    </form>
+</@layout.myLayout>

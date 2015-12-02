@@ -1,0 +1,64 @@
+@startuml
+class Role {
+id
+name
+position
+assignable
+builtin
+permissions
+}
+
+class MemberRole {
+id
+member_id
+role_id
+inherited_from
+}
+
+class Member {
+id
+user_id
+project_id
+created_on
+main_notification
+}
+
+class Project {
+id
+name
+description
+homepage
+is_public
+parent_id
+created_on
+updated_on
+identifier
+status
+lft
+rgt
+}
+
+class User {
+id
+login
+hashed_password
+firstname
+lastname
+mail
+mail_notification
+admin
+statu
+last_login_on
+language
+auth_source_id
+created_on
+updated_on
+type
+identity_url
+}
+
+MemberRole "*" - "1" Role
+Member "1" - "*" MemberRole
+Member "*" -up- "1" Project
+Member "*" -down- "1" User
+@enduml

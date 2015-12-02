@@ -1,5 +1,5 @@
 <#import "../layout/layout.ftl.html" as layout>
-    <@layout.myLayout "Home page">
+    <@layout.myLayout "Signup">
     <style>
         body {
         background-color: #DADADA;
@@ -26,22 +26,32 @@
                             <input type="text" name="account" placeholder="Account">
                         </div>
                     </div>
-                    <div class="field">
-                        <div class="ui left icon input">
-                            <i class="user icon"></i>
-                            <input type="text" name="firstName" placeholder="First name">
+                    <div class="two fields">
+                        <div class="field">
+                            <div class="ui left input">
+                                <input type="text" name="firstName" placeholder="First name">
+                            </div>
                         </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui left icon input">
-                            <i class="user icon"></i>
-                            <input type="text" name="lastName" placeholder="Last name">
+                        <div class="field">
+                            <div class="ui left input">
+                                <input type="text" name="lastName" placeholder="Last name">
+                            </div>
                         </div>
                     </div>
                     <div class="field">
                         <div class="ui left icon input">
                             <i class="lock icon"></i>
                             <input type="password" name="password" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class=""></i>
+                            <select name="role">
+                                <option value="admin">Administrator</option>
+                                <option value="developer">Developer</option>
+                                <option value="guest" selected>Guest</option>
+                            </select>
                         </div>
                     </div>
                     <button type="submit" class="ui fluid large teal submit button">Signup</button>
